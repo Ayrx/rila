@@ -54,3 +54,7 @@ class Interpreter(object):
         foo = frame.pop()
         print("value: {}".format(foo.value))
         return foo
+
+    def PRINT(self, pc, bytecode, frame):
+        item = frame.pop()
+        print item.str()
