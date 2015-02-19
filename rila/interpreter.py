@@ -51,10 +51,11 @@ class Interpreter(object):
         return pc + 1
 
     def POP_TOP(self, pc, bytecode, frame):
-        foo = frame.pop()
-        print("value: {}".format(foo.value))
-        return foo
+        frame.pop()
+        return pc + 1
 
     def PRINT(self, pc, bytecode, frame):
         item = frame.pop()
         print item.str()
+        frame.push(None)
+        return pc + 1
