@@ -50,3 +50,12 @@ class BinaryOp(BaseBox):
             "/": bytecodes.BINARY_DIVIDE,
         }
         ctx.emit(opname[self.operator])
+
+
+class Print(Node):
+    def __init__(self, expression):
+        self.expression = expression
+
+    def compile(self, ctx):
+        self.expression.compile(ctx)
+        ctx.emit(bytecodes.PRINT)
