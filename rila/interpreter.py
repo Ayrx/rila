@@ -57,5 +57,4 @@ class Interpreter(object):
     def PRINT(self, pc, bytecode, frame):
         item = frame.pop()
         print item.str()
-        frame.push(None)
         return pc + 1
