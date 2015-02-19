@@ -8,6 +8,7 @@ bytecodes = [
     "BINARY_MULTIPLY",
     "BINARY_DIVIDE",
     "POP_TOP",
+    "PRINT",
 ]
 
 module = sys.modules[__name__]

@@ -4,7 +4,7 @@ import ast
 
 
 pg = ParserGenerator(
-    ["SEMICOLON", "NUMBER", "ADD", "SUB", "MULT", "DIV"],
+    ["SEMICOLON", "NUMBER", "ADD", "SUB", "MULT", "DIV", "PRINT"],
     precedence=[
         ("left", ["ADD", "SUB"]),
         ("left", ["MULT", "DIV"])
@@ -25,6 +25,11 @@ def statements_statement(s):
 @pg.production("statement : expression SEMICOLON")
 def statement_expression(s):
     return ast.Statement(s[0])
+
+
+@pg.production("expression : PRINT expression")
+def expression_print(s):
+    return ast.Print(s[1])
 
 
 @pg.production("expression : NUMBER")
