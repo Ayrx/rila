@@ -27,8 +27,8 @@ def statement_expression(s):
     return ast.Statement(s[0])
 
 
-@pg.production("expression : PRINT expression")
-def expression_print(s):
+@pg.production("statement : PRINT expression SEMICOLON")
+def statement_print(s):
     return ast.Print(s[1])
 
 
