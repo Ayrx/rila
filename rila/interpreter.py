@@ -1,4 +1,6 @@
-from bytecodes import bytecodes
+from rpython.rlib.objectmodel import specialize
+
+from bytecodes import bytecodes, unrolled_bytecodes
 
 
 class Frame(object):
@@ -18,8 +20,16 @@ class Interpreter(object):
         pc = 0
         while pc < len(bytecode.code):
             opcode = ord(bytecode.code[pc])
-            opname = bytecodes[opcode]
-            pc = getattr(self, opname)(pc, bytecode, frame)
+            # opname = bytecodes[opcode]
+            # pc = getattr(self, opname)(pc, bytecode, frame)
+            for i, name in unrolled_bytecodes:
+                if i == opcode:
+                    pc = self.run_instructions(name, pc, bytecode, frame)
+                    break
+
+    @specialize.arg(1)
+    def run_instructions(self, opname, pc, bytecode, frame):
+        return getattr(self, opname)(pc, bytecode, frame)
 
     def LOAD_CONST(self, pc, bytecode, frame):
         arg = ord(bytecode.code[pc + 1])
