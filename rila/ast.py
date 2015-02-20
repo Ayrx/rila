@@ -16,6 +16,9 @@ class Block(Node):
         for i in self.statements:
             i.compile(ctx)
 
+    def getastlist(self):
+        return self.statements
+
 
 class Statement(Node):
     def __init__(self, expression):
