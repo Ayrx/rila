@@ -30,31 +30,31 @@ class Interpreter(object):
         right = frame.pop()
         left = frame.pop()
         frame.push(left.add(right))
-        return pc + 1
+        return pc + 2
 
     def BINARY_SUBTRACT(self, pc, bytecode, frame):
         right = frame.pop()
         left = frame.pop()
         frame.push(left.sub(right))
-        return pc + 1
+        return pc + 2
 
     def BINARY_MULTIPLY(self, pc, bytecode, frame):
         right = frame.pop()
         left = frame.pop()
         frame.push(left.mult(right))
-        return pc + 1
+        return pc + 2
 
     def BINARY_DIVIDE(self, pc, bytecode, frame):
         right = frame.pop()
         left = frame.pop()
         frame.push(left.div(right))
-        return pc + 1
+        return pc + 2
 
     def POP_TOP(self, pc, bytecode, frame):
         frame.pop()
-        return pc + 1
+        return pc + 2
 
     def PRINT(self, pc, bytecode, frame):
         item = frame.pop()
         print item.str()
-        return pc + 1
+        return pc + 2
