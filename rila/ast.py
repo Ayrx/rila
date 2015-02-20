@@ -1,7 +1,7 @@
 from rply.token import BaseBox
 
-from rila import bytecodes
-from rila.objects import RilaNumber
+import bytecodes
+from objects import RilaNumber
 
 
 class Node(BaseBox):

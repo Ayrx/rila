@@ -1,4 +1,4 @@
-from rila.bytecodes import bytecodes
+from bytecodes import bytecodes
 
 
 class Frame(object):
