@@ -20,7 +20,7 @@ class RilaNumber(RilaObject):
 
     def div(self, other):
         assert isinstance(other, RilaNumber)
-        return RilaNumber(self.value / float(other.value))
+        return RilaNumber(self.value / other.value)
 
     def str(self):
         return str(self.value)
