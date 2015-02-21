@@ -20,8 +20,6 @@ class Interpreter(object):
         pc = 0
         while pc < len(bytecode.code):
             opcode = ord(bytecode.code[pc])
-            # opname = bytecodes[opcode]
-            # pc = getattr(self, opname)(pc, bytecode, frame)
             for i, name in unrolled_bytecodes:
                 if i == opcode:
                     pc = self.run_instructions(name, pc, bytecode, frame)
