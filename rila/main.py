@@ -13,10 +13,11 @@ def run(fname):
     ctx = Context()
     parser.parse(lexer.lex(source_code)).compile(ctx)
 
-    frame = Frame()
+    bytecode = ctx.create_bytecode()
+    frame = Frame(bytecode)
     interpreter = Interpreter()
 
-    interpreter.interpret(ctx.create_bytecode(), frame)
+    interpreter.interpret(bytecode, frame)
 
 
 def entry_point(argv):

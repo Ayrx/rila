@@ -4,8 +4,9 @@ from bytecodes import bytecodes, unrolled_bytecodes
 
 
 class Frame(object):
-    def __init__(self):
+    def __init__(self, bytecode):
         self.valuestack = []
+        self.variables = [None] * bytecode.num_variables
 
     def push(self, value):
         self.valuestack.append(value)
@@ -65,4 +66,14 @@ class Interpreter(object):
     def PRINT(self, pc, bytecode, frame):
         item = frame.pop()
         print item.str()
+        return pc + 2
+
+    def STORE_NAME(self, pc, bytecode, frame):
+        arg = ord(bytecode.code[pc + 1])
+        frame.variables[arg] = frame.pop()
+        return pc + 2
+
+    def LOAD_NAME(self, pc, bytecode, frame):
+        arg = ord(bytecode.code[pc + 1])
+        frame.push(frame.variables[arg])
         return pc + 2

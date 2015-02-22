@@ -62,3 +62,21 @@ class Print(Node):
     def compile(self, ctx):
         self.expression.compile(ctx)
         ctx.emit(bytecodes.PRINT)
+
+
+class Name(Node):
+    def __init__(self, name):
+        self.name = name
+
+    def compile(self, ctx):
+        ctx.emit(bytecodes.LOAD_NAME, ctx.new_var(self.name))
+
+
+class Assignment(Node):
+    def __init__(self, name, expression):
+        self.name = name
+        self.expression = expression
+
+    def compile(self, ctx):
+        self.expression.compile(ctx)
+        ctx.emit(bytecodes.STORE_NAME, ctx.new_var(self.name))

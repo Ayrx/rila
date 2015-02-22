@@ -10,6 +10,8 @@ bytecodes = [
     "BINARY_DIVIDE",
     "POP_TOP",
     "PRINT",
+    "LOAD_NAME",
+    "STORE_NAME",
 ]
 
 bytecode_names = []
