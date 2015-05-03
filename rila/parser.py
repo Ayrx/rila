@@ -5,7 +5,7 @@ import ast
 
 pg = ParserGenerator(
     ["SEMICOLON", "NUMBER", "ADD", "SUB", "MULT", "DIV", "PRINT", "NAME",
-     "ASSIGN"],
+     "ASSIGN", "BOOLEAN"],
     precedence=[
         ("left", ["ADD", "SUB"]),
         ("left", ["MULT", "DIV"])
@@ -46,6 +46,12 @@ def expression_name(s):
 @pg.production("expression : NUMBER")
 def expression_number(s):
     return ast.Number(int(s[0].getstr()))
+
+
+@pg.production("expression : BOOLEAN")
+def expression_boolean(s):
+    val = True if s[0].getstr() == "True" else False
+    return ast.Boolean(val)
 
 
 @pg.production("expression : expression ADD expression")

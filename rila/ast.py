@@ -1,7 +1,7 @@
 from rply.token import BaseBox
 
 import bytecodes
-from objects import RilaNumber
+from objects import RilaBoolean, RilaNumber
 
 
 class Node(BaseBox):
@@ -80,3 +80,11 @@ class Assignment(Node):
     def compile(self, ctx):
         self.expression.compile(ctx)
         ctx.emit(bytecodes.STORE_NAME, ctx.new_var(self.name))
+
+
+class Boolean(Node):
+    def __init__(self, value):
+        self.value = value
+
+    def compile(self, ctx):
+        ctx.emit(bytecodes.LOAD_CONST, ctx.new_const(RilaBoolean(self.value)))

@@ -32,4 +32,4 @@ class RilaBoolean(RilaObject):
         self.value = value
 
     def str(self):
-        return str(self.value)
+        return "True" if self.value else "False"
