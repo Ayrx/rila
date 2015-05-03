@@ -77,3 +77,9 @@ class Interpreter(object):
         arg = ord(bytecode.code[pc + 1])
         frame.push(frame.variables[arg])
         return pc + 2
+
+    def BINARY_EQUALS(self, pc, bytecode, frame):
+        right = frame.pop()
+        left = frame.pop()
+        frame.push(left.equal(right))
+        return pc + 2

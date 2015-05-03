@@ -12,6 +12,7 @@ bytecodes = [
     "PRINT",
     "LOAD_NAME",
     "STORE_NAME",
+    "BINARY_EQUALS",
 ]
 
 bytecode_names = []

@@ -22,6 +22,10 @@ class RilaNumber(RilaObject):
         assert isinstance(other, RilaNumber)
         return RilaNumber(self.value / other.value)
 
+    def equal(self, other):
+        assert isinstance(other, RilaNumber)
+        return RilaBoolean(self.value == other.value)
+
     def str(self):
         return str(self.value)
 
@@ -30,6 +34,10 @@ class RilaBoolean(RilaObject):
     def __init__(self, value):
         assert value in [True, False]
         self.value = value
+
+    def equal(self, other):
+        assert isinstance(other, RilaBoolean)
+        return RilaBoolean(self.value == other.value)
 
     def str(self):
         return "True" if self.value else "False"

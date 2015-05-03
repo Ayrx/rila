@@ -51,6 +51,7 @@ class BinaryOp(BaseBox):
             "-": bytecodes.BINARY_SUBTRACT,
             "*": bytecodes.BINARY_MULTIPLY,
             "/": bytecodes.BINARY_DIVIDE,
+            "==": bytecodes.BINARY_EQUALS,
         }
         ctx.emit(opname[self.operator])
 

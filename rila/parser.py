@@ -5,7 +5,7 @@ import ast
 
 pg = ParserGenerator(
     ["SEMICOLON", "NUMBER", "ADD", "SUB", "MULT", "DIV", "PRINT", "NAME",
-     "ASSIGN", "BOOLEAN"],
+     "ASSIGN", "BOOLEAN", "EQUALS"],
     precedence=[
         ("left", ["ADD", "SUB"]),
         ("left", ["MULT", "DIV"])
@@ -58,6 +58,7 @@ def expression_boolean(s):
 @pg.production("expression : expression SUB expression")
 @pg.production("expression : expression MULT expression")
 @pg.production("expression : expression DIV expression")
+@pg.production("expression : expression EQUALS expression")
 def expression_binop(s):
     return ast.BinaryOp(s[1].getstr(), s[0], s[2])
 
