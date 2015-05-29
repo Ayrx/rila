@@ -37,7 +37,7 @@ class Number(Node):
         ctx.emit(bytecodes.LOAD_CONST, ctx.new_const(RilaNumber(self.value)))
 
 
-class BinaryOp(BaseBox):
+class BinaryOp(Node):
     def __init__(self, operator, left, right):
         self.operator = operator
         self.left = left
