@@ -10,6 +10,9 @@ def run(fname):
     with open(fname, "r") as f:
         source_code = f.read()
 
+    if source_code[0:2] == "#!":
+        source_code = "\n".join(source_code.split("\n")[1:])
+
     ctx = Context()
     parser.parse(lexer.lex(source_code)).compile(ctx)
 
