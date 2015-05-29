@@ -28,7 +28,7 @@ def entry_point(argv):
         filename = argv[1]
 
     except IndexError:
-        print "Missing argument"
+        print "Please specify a source file."
         return 1
 
     run(filename)
