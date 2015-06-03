@@ -10,6 +10,7 @@ def run(fname):
     with open(fname, "r") as f:
         source_code = f.read()
 
+    # Remove shebang line if it exists.
     if source_code[0:2] == "#!":
         source_code = "\n".join(source_code.split("\n")[1:])
 
